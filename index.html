@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitsopay - Smart Investment Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+/* Base reset */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Roboto',sans-serif; background:#f4f6f8; color:#333; overflow-x:hidden;}
+a {text-decoration:none; color:inherit;}
+
+/* Header */
+header {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0b1f44, #122b5f);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+header h1, header p, .cta-buttons {position:relative; z-index:1;}
+header h1 {font-size:3em; margin-bottom:15px; animation: fadeInDown 1s;}
+header p {font-size:1.3em; margin-bottom:25px; animation: fadeInUp 1s;}
+.highlight {color:#ff6b6b; font-weight:bold;}
+.cta-buttons {display:flex; gap:15px; flex-wrap:wrap; justify-content:center; animation: fadeInUp 1.5s;}
+.cta-buttons a {
+  background:#ff6b6b; color:white; padding:15px 30px; border-radius:50px;
+  font-weight:bold; transition:0.3s; box-shadow:0 8px 15px rgba(0,0,0,0.2);
+}
+.cta-buttons a:hover {background:#ff4757; transform:translateY(-3px); box-shadow:0 12px 20px rgba(0,0,0,0.3);}
+
+/* Floating dollar bills */
+.money {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.9;
+  animation-name: floatMoney;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+@keyframes floatMoney {
+  0% {
+    transform: translateY(100vh) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(var(--x-wobble));
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg) translateX(calc(-1 * var(--x-wobble)));
+    opacity: 0;
+  }
+}
+
+/* Fade animations */
+@keyframes fadeInDown {0%{opacity:0;transform:translateY(-50px);}100%{opacity:1;transform:translateY(0);} }
+@keyframes fadeInUp {0%{opacity:0;transform:translateY(50px);}100%{opacity:1;transform:translateY(0);} }
+@keyframes fadeInCard {to {opacity:1; transform:translateY(0);}}
+
+/* Sections */
+section {padding:80px 20px; max-width:1200px; margin:auto;}
+h2 {text-align:center; margin-bottom:50px; font-size:2em; color:#333;}
+
+/* Feature Cards */
+.features {display:flex; flex-wrap:wrap; justify-content:space-around; gap:40px;}
+.feature-card {
+  background:white; border-radius:15px; padding:30px; width:300px;
+  text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  opacity:0; transform:translateY(50px);
+}
+.feature-card:hover {transform: translateY(-10px); box-shadow:0 20px 30px rgba(0,0,0,0.2);}
+.feature-card img {width:80px; margin-bottom:20px;}
+
+/* Reviews */
+.reviews {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px;}
+.review-card {background:white; padding:25px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1);
+opacity:0; transform:translateY(50px);}
+
+/* Calculator */
+.calculator {
+  background:white; padding:40px; border-radius:20px; box-shadow:0 15px 30px rgba(0,0,0,0.1);
+  margin:50px auto; max-width:700px; text-align:center;
+}
+.calculator input {padding:12px 20px; margin:15px 0; font-size:1em; border-radius:8px; border:1px solid #ccc; width:200px; text-align:center;}
+.calculator canvas {margin-top:30px;}
+.calculator a {
+  display:inline-block; margin-top:20px; background:#ff6b6b; color:white;
+  padding:15px 35px; border-radius:50px; font-weight:bold; transition:0.3s;
+  box-shadow:0 8px 15px rgba(0,0,0,0.2);
+}
+.calculator a:hover {background:#ff4757; transform:translateY(-3px); box-shadow:0 12px 20px rgba(0,0,0,0.3);}
+
+/* Footer */
+footer {text-align:center; padding:40px 20px; background:#333; color:white;}
+footer a {color:#50e3c2;}
+footer a:hover{text-decoration:underline;}
+
+/* Smooth scroll */
+html {scroll-behavior:smooth;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Bitsopay</h1>
+  <p>Smart Investment Solutions for Everyone</p>
+  <div class="cta-buttons">
+    <a href="https://api.whatsapp.com/send?phone=12136182487&text=HELLO%20BITSOPAY%2C%20HOW%20DO%20I%20START%20INVESTING" target="_blank">
+      Chat on WhatsApp
+    </a>
+    <a href="mailto:bitsopay@gmail.com">Email Us</a>
+  </div>
+  <p style="margin-top:20px;">Start with as low as <span class="highlight">$200</span></p>
+</header>
+
+<section>
+  <h2>Why Invest with Bitsopay?</h2>
+  <div class="features">
+    <div class="feature-card"><img src="https://img.icons8.com/fluency/96/000000/money.png" alt="Secure Investments"><h3>Secure Investments</h3><p>Your funds are protected with top-notch security measures.</p></div>
+    <div class="feature-card"><img src="https://img.icons8.com/fluency/96/000000/stock-market.png" alt="High Returns"><h3>High Returns</h3><p>Grow your money with smart, well-planned investment strategies.</p></div>
+    <div class="feature-card"><img src="https://img.icons8.com/fluency/96/000000/customer-support.png" alt="24/7 Support"><h3>24/7 Customer Support</h3><p>Our team is always ready to assist you, any time, anywhere.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Investment Growth Calculator</h2>
+  <div class="calculator">
+    <p>Enter your investment amount ($200 minimum)</p>
+    <input type="number" id="investment" value="200" min="200" step="10">
+    <canvas id="growthChart" width="400" height="200"></canvas>
+    <a href="https://api.whatsapp.com/send?phone=12136182487&text=HELLO%20BITSOPAY%2C%20HOW%20DO%20I%20START%20INVESTING" target="_blank">Start Investment</a>
+  </div>
+</section>
+
+<section>
+  <h2>What Our Customers Say</h2>
+  <div class="reviews">
+    <div class="review-card"><p>"Bitsopay made investing easy for me. I started with just $200 and it's growing steadily!"</p><strong>- Amanda J.</strong></div>
+    <div class="review-card"><p>"Professional team, transparent processes, and great returns. Highly recommend!"</p><strong>- Michael S.</strong></div>
+    <div class="review-card"><p>"I was hesitant at first, but Bitsopay's support team guided me step by step."</p><strong>- Sophia R.</strong></div>
+    <div class="review-card"><p>"The app interface and dashboard are super intuitive. Investing has never been this easy."</p><strong>- David L.</strong></div>
+    <div class="review-card"><p>"I appreciate the low minimum investment. Anyone can start with Bitsopay!"</p><strong>- Priya K.</strong></div>
+    <div class="review-card"><p>"Reliable and trustworthy. My portfolio has grown faster than I expected."</p><strong>- James T.</strong></div>
+    <div class="review-card"><p>"Excellent customer service. Always ready to answer my queries on WhatsApp."</p><strong>- Emily W.</strong></div>
+  </div>
+</section>
+
+<footer>
+  <p>Bitsopay © 2026 | Email: <a href="mailto:bitsopay@gmail.com">bitsopay@gmail.com</a> | Chat: <a href="https://api.whatsapp.com/send?phone=12136182487&text=HELLO%20BITSOPAY%2C%20HOW%20DO%20I%20START%20INVESTING" target="_blank">WhatsApp</a></p>
+  <p>Start investing today with as low as <span class="highlight">$200</span></p>
+</footer>
+
+<script>
+// 1️⃣ Dynamic floating dollar bills with randomized wobble and delays
+const header = document.querySelector('header');
+const numberOfBills = 15;
+
+for (let i = 0; i < numberOfBills; i++) {
+  const bill = document.createElement('div');
+  bill.className = 'money';
+  
+  const left = Math.random() * 90;
+  bill.style.left = `${left}%`;
+  
+  const size = 30 + Math.random() * 40;
+  bill.style.width = `${size}px`;
+  bill.style.height = `${size * 0.5}px`;
+  
+  const duration = 10 + Math.random() * 15;
+  bill.style.animationDuration = `${duration}s`;
+  
+  const delay = Math.random() * 5;
+  bill.style.animationDelay = `${delay}s`;
+  
+  const wobble = 10 + Math.random() * 30;
+  bill.style.setProperty('--x-wobble', `${wobble}px`);
+  
+  header.appendChild(bill);
+}
+
+// 2️⃣ Animate feature and review cards on scroll
+const cards = document.querySelectorAll('.feature-card, .review-card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.animation = 'fadeInCard 1s forwards';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+cards.forEach(card => observer.observe(card));
+
+// 3️⃣ Chart.js investment growth
+const ctx = document.getElementById('growthChart').getContext('2d');
+let growthChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Year 0','Year 1','Year 2','Year 3','Year 4','Year 5'],
+    datasets: [{
+      label: 'Projected Growth ($)',
+      data: calculateGrowth(200),
+      borderColor: '#4a90e2',
+      backgroundColor: 'rgba(74,144,226,0.2)',
+      fill:true,
+      tension:0.4
+    }]
+  },
+  options:{responsive:true, animation:{duration:1000}, scales:{y:{beginAtZero:true}}}
+});
+
+function calculateGrowth(amount){
+  const data = [];
+  const growthRate = 0.2;
+  for(let i=0;i<=5;i++){data.push(Math.round(amount*Math.pow(1+growthRate,i))); }
+  return data;
+}
+
+function updateChart(amount){
+  growthChart.data.datasets[0].data = calculateGrowth(amount);
+  growthChart.update();
+}
+
+document.getElementById('investment').addEventListener('input', ()=>{
+  let amount = parseFloat(document.getElementById('investment').value) || 200;
+  if(amount < 200) amount = 200;
+  updateChart(amount);
+});
+
+// Trigger chart update on scroll
+function handleScrollAnimation(){
+  const rect=document.querySelector('.calculator').getBoundingClientRect();
+  if(rect.top<window.innerHeight-100){
+    updateChart(parseFloat(document.getElementById('investment').value)||200);
+    window.removeEventListener('scroll', handleScrollAnimation);
+  }
+}
+window.addEventListener('scroll', handleScrollAnimation);
+</script>
+
+</body>
+</html>
